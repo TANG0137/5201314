@@ -40,7 +40,7 @@ button { margin-top:20px; padding:12px 24px; border:none; border-radius:8px;
 <!-- 題目 1-5 單選 -->
 <div class="question" id="q1">
   <p>1. 你最喜欢我哪个特质？</p>
-  <label><input type="radio" name="q1" value="10"> 超帅气老公</label>
+  <label><input type="radio" name="q1" value="30"> 超帅气老公</label>
   <label><input type="radio" name="q1" value="7"> 帅气</label>
   <label><input type="radio" name="q1" value="5"> 调皮</label>
  <label><input type="radio" name="q1" value="2"> 可愛</label>
@@ -55,7 +55,7 @@ button { margin-top:20px; padding:12px 24px; border:none; border-radius:8px;
 <label><input type="radio" name="q2" value="-8"> 心</label>
   <label><input type="radio" name="q2" value="2"> 脸</label>
 <label><input type="radio" name="q2" value="-7"> 鸡巴</label>
-<label><input type="radio" name="q2" value="20"> 骚逼</label>
+<label><input type="radio" name="q2" value="30"> 骚逼</label>
   <button onclick="nextQuestion(2)">下一題</button>
 </div>
 <div class="question" id="q3">
@@ -64,7 +64,7 @@ button { margin-top:20px; padding:12px 24px; border:none; border-radius:8px;
   <label><input type="radio" name="q3" value="-5"> 脸</label>
  
   <label><input type="radio" name="q3" value="-8"> 鸡巴</label>
-<label><input type="radio" name="q3" value="10"> 個性</label>
+<label><input type="radio" name="q3" value="40"> 個性</label>
 <label><input type="radio" name="q3" value="-6"> 身体</label>
 
   <button onclick="nextQuestion(3)">下一題</button>
@@ -72,7 +72,7 @@ button { margin-top:20px; padding:12px 24px; border:none; border-radius:8px;
 <div class="question" id="q4">
   <p>4. 你喜欢我哪种性格？ </p>
   <label><input type="radio" name="q4" value="-10"> 温柔</label>
-  <label><input type="radio" name="q4" value="15"> 活泼</label>
+  <label><input type="radio" name="q4" value="25"> 活泼</label>
   <label><input type="radio" name="q4" value="-15"> 神祕</label>
 <label><input type="radio" name="q4" value="-15"> 幽默</label>
  <label><input type="radio" name="q4" value="-50"> 阴郁</label>
@@ -83,7 +83,7 @@ button { margin-top:20px; padding:12px 24px; border:none; border-radius:8px;
   <label><input type="radio" name="q5" value="-30"> 不能</label>
   <label><input type="radio" name="q5" value="-50"> 真的不能</label>
   <label><input type="radio" name="q5" value="-100"> 绝对不能</label>
-<label><input type="radio" name="q5" value="15"> 来吧老公</label>
+<label><input type="radio" name="q5" value="25"> 来吧老公</label>
 
   <button onclick="nextQuestion(5)">下一題</button>
 </div>
@@ -147,14 +147,14 @@ button { margin-top:20px; padding:12px 24px; border:none; border-radius:8px;
 <label><input type="radio" name="q12" value="10"> 车上</label>
 <label><input type="radio" name="q12" value="6"> 廚房</label>
 
-  <button onclick="nextQuestion(3)">下一題</button>
+  <button onclick="nextQuestion(12)">下一題</button>
 </div>
 <div class="question" id="q13">
   <p>13. 你猜我最想跟你做啥？ </p>
   <label><input type="radio" name="q13" value="15"> 亲嘴</label>
   <label><input type="radio" name="q13" value="10"> 做爱</label>
   <label><input type="radio" name="q13" value="-15"> 拥抱</label>
-  <button onclick="nextQuestion(4)">下一題</button>
+  <button onclick="nextQuestion(13)">下一題</button>
 </div>
 <div class="result" id="result"></div>
 
@@ -182,11 +182,11 @@ function nextQuestion(current){
   if(current<=5){ // 單選
     const radios = document.getElementsByName("q"+current);
     for(let r of radios) if(r.checked){ answered=true; score+=parseInt(r.value); }
-    if(!answered){ alert("請先選擇答案"); return; }
+    if(!answered){ alert("是不是想被我干，大笨蛋"); return; }
   } else if(current>=6 && current<=8){ // 圖片選擇
     const imgs = document.querySelectorAll("#q"+current+" .img-choice img");
     for(let img of imgs){ if(img.classList.contains("selected")){ answered=true; score+=parseInt(img.dataset.value); } }
-    if(!answered){ alert("請先選擇圖片"); return; }
+    if(!answered){ alert("你个臭傻逼，欠干"); return; }
   } else if(current>=9 && current<=11){ // 滑桿
     const val = parseInt(document.getElementById("slider"+current).value);
     score += val;
@@ -208,7 +208,7 @@ function showResult(){
   document.getElementById("progress-bar").style.width="100%";
 
   // 最大分數計算（單選+圖片+滑桿+拖曳排序）
-  const maxScore = 50 + 30 + 30 + 70;
+  const maxScore = 80 + 60 + 50 ;
   const percentage = Math.round((score / maxScore) * 100);
 
   let msg="";
@@ -254,6 +254,4 @@ makeSortable("sortable13");
 </script>
 </body>
 </html>
-
-
 
