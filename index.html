@@ -40,42 +40,42 @@ button { margin-top:20px; padding:12px 24px; border:none; border-radius:8px;
 <!-- 題目 1-5 單選 -->
 <div class="question" id="q1">
   <p>1. 你最喜欢我哪个特质？</p>
-  <label><input type="radio" name="q1" value="7"> 超帅气老公</label>
-  <label><input type="radio" name="q1" value="5"> 帅气</label>
-  <label><input type="radio" name="q1" value="3"> 调皮</label>
+  <label><input type="radio" name="q1" value="10"> 超帅气老公</label>
+  <label><input type="radio" name="q1" value="7"> 帅气</label>
+  <label><input type="radio" name="q1" value="5"> 调皮</label>
  <label><input type="radio" name="q1" value="2"> 可愛</label>
  <label><input type="radio" name="q1" value="-2"> 爱生气</label>
- <label><input type="radio" name="q1" value="-5"> 大笨蛋</label>
- <label><input type="radio" name="q1" value="5"> 骚</label>
+ <label><input type="radio" name="q1" value="-20"> 大笨蛋</label>
+ <label><input type="radio" name="q1" value="1"> 骚</label>
   <button onclick="nextQuestion(1)">下一題</button>
 </div>
 <div class="question" id="q2">
   <p>2. 你喜欢我哪里?</p>
-  <label><input type="radio" name="q2" value="7"> 身体</label>
-<label><input type="radio" name="q2" value="7"> 心</label>
-  <label><input type="radio" name="q2" value="5"> 脸</label>
-<label><input type="radio" name="q2" value="7"> 鸡巴</label>
-<label><input type="radio" name="q2" value="10"> 骚逼</label>
+  <label><input type="radio" name="q2" value="-6"> 身体</label>
+<label><input type="radio" name="q2" value="-8"> 心</label>
+  <label><input type="radio" name="q2" value="2"> 脸</label>
+<label><input type="radio" name="q2" value="-7"> 鸡巴</label>
+<label><input type="radio" name="q2" value="20"> 骚逼</label>
   <button onclick="nextQuestion(2)">下一題</button>
 </div>
 <div class="question" id="q3">
   <p>3. 你猜我喜欢你哪里？</p>
-  <label><input type="radio" name="q3" value="2"> 嘴巴</label>
-  <label><input type="radio" name="q3" value="1"> 脸</label>
+  <label><input type="radio" name="q3" value="-10"> 嘴巴</label>
+  <label><input type="radio" name="q3" value="-5"> 脸</label>
  
-  <label><input type="radio" name="q3" value="1"> 鸡巴</label>
+  <label><input type="radio" name="q3" value="-8"> 鸡巴</label>
 <label><input type="radio" name="q3" value="10"> 個性</label>
-<label><input type="radio" name="q3" value="1"> 身体</label>
+<label><input type="radio" name="q3" value="-6"> 身体</label>
 
   <button onclick="nextQuestion(3)">下一題</button>
 </div>
 <div class="question" id="q4">
   <p>4. 你喜欢我哪种性格？ </p>
-  <label><input type="radio" name="q4" value="3"> 温柔</label>
-  <label><input type="radio" name="q4" value="10"> 活泼</label>
-  <label><input type="radio" name="q4" value="-5"> 神祕</label>
-<label><input type="radio" name="q4" value="1"> 幽默</label>
- <label><input type="radio" name="q4" value="-10"> 阴郁</label>
+  <label><input type="radio" name="q4" value="-10"> 温柔</label>
+  <label><input type="radio" name="q4" value="15"> 活泼</label>
+  <label><input type="radio" name="q4" value="-15"> 神祕</label>
+<label><input type="radio" name="q4" value="-15"> 幽默</label>
+ <label><input type="radio" name="q4" value="-50"> 阴郁</label>
   <button onclick="nextQuestion(4)">下一題</button>
 </div>
 <div class="question" id="q5">
@@ -139,26 +139,23 @@ button { margin-top:20px; padding:12px 24px; border:none; border-radius:8px;
 
 <!-- 題目 12-13 拖曳排序 -->
 <div class="question" id="q12">
-  <p>12. 你猜我最想在哪做爱排序下</p>
-  <div id="sortable12">
-    <div class="sortable-item" data-value="3" draggable="true">电影院</div>
-    <div class="sortable-item" data-value="5" draggable="true">厨房</div>
-    <div class="sortable-item" data-value="7" draggable="true">车上</div>
-    <div class="sortable-item" data-value="1" draggable="true">卧室</div>
-    <div class="sortable-item" data-value="1" draggable="true">卫生间</div>
-  </div>
-  <button onclick="nextQuestion(12)">下一題</button>
+  <p>12. 你猜我喜欢在哪做愛？</p>
+  <label><input type="radio" name="q12" value="-10">电影院</label>
+  <label><input type="radio" name="q12" value="-5"> 卧室</label>
+ 
+  <label><input type="radio" name="q12" value="-8"> 廁所</label>
+<label><input type="radio" name="q12" value="10"> 车上</label>
+<label><input type="radio" name="q12" value="6"> 廚房</label>
+
+  <button onclick="nextQuestion(3)">下一題</button>
 </div>
 <div class="question" id="q13">
-  <p>13. 请将你最想一起做的三件事排序:</p>
-  <div id="sortable13">
-    <div class="sortable-item" data-value="3" draggable="true">做爱</div>
-    <div class="sortable-item" data-value="7" draggable="true">亲嘴</div>
-    <div class="sortable-item" data-value="0" draggable="true">拥抱</div>
-  </div>
-  <button onclick="nextQuestion(13)">完成測驗</button>
+  <p>13. 你猜我最想跟你做啥？ </p>
+  <label><input type="radio" name="q13" value="15"> 亲嘴</label>
+  <label><input type="radio" name="q13" value="10"> 做爱</label>
+  <label><input type="radio" name="q13" value="-15"> 拥抱</label>
+  <button onclick="nextQuestion(4)">下一題</button>
 </div>
-
 <div class="result" id="result"></div>
 
 <script>
@@ -213,7 +210,6 @@ function showResult(){
   // 最大分數計算（單選+圖片+滑桿+拖曳排序）
   const maxScore = 50 + 30 + 30 + 70;
   const percentage = Math.round((score / maxScore) * 100);
-  if(percentage > 100) percentage = 100;
 
   let msg="";
   if(percentage>=95){ msg="老公!💖我爱你💖嫁给我!保证你不吃亏的😁虽然我不会唱歌，不会弹吉他。但我会用我的真心写出爱你的乐谱。虽然我没法给你买东西，但我会用我的行动传达给你我的爱意。虽然我的身材或许不是你最爱的，但我会让我的内在成为你的无可或缺。老公或许我不是最好的，但我会拼尽全力成为你最爱的，因为...在我的心里，你就是我的最爱，我想和你一起经历。跟我一起走一辈子好吗?💓"; }
@@ -258,5 +254,6 @@ makeSortable("sortable13");
 </script>
 </body>
 </html>
+
 
 
