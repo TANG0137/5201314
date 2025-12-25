@@ -114,7 +114,10 @@ button{
 const app = document.getElementById("app");
 const bgm = document.getElementById("bgm");
 
+
 const PASSWORD = "20250501";
+const PASSWORD_ALT  = "0607";   
+const PASSWORD_END  = "0216";    
 
 function passwordGate(){
   app.innerHTML = `
@@ -133,13 +136,63 @@ function passwordGate(){
 
 function checkPassword(){
   const val = document.getElementById("pwd").value;
-  if(val === PASSWORD){
+  if(bgm.paused){
     bgm.volume = 0.5;
     bgm.play().catch(()=>{});
-    stage1();
-  }else{
-    alert("傻子连这都不知道，记得我们的第一次吗?<br>202xxxxx");
   }
+  // 🌟 唯一正确答案
+  if(val === PASSWORD){
+    app.innerHTML = `
+      <p class="fade-in" style="font-size:28px">
+        适<br>
+        不知不觉已经半年了，<br>
+        我们走得不稳，<br>
+        但走得很认真。<br>
+        有过慌乱，有过失措，<br>
+        爱你都显得笨拙。<br>
+        但你始终在我身边。
+      </p>
+      <button class="fade-in fade-delay-2" onclick="stage2()">继续</button>
+    `;
+    return;
+  }
+
+  // 🥚 彩蛋 0607
+  if(val === PASSWORD_ALT){
+    app.innerHTML = `
+      <p class="fade-in" style="font-size:26px">
+        你果然会试这个。<br><br>
+        臭坏蛋，<br>
+        这是我家宝宝的日子，<br>
+        不是拿来给你当密码的，<br>
+        打死你😡。
+      </p>
+      <button class="fade-in fade-delay-2" onclick="passwordGate()">回去</button>
+    `;
+    return;
+  }
+
+  // 🥀 彩蛋 0216
+  if(val === PASSWORD_END){
+    app.innerHTML = `
+      <p class="fade-in" style="font-size:26px">
+        你第一个肯定是输入这个吧?<br><br>
+        不是的话去罚站，<br>
+        打死你😡。
+      </p>
+      <button class="fade-in fade-delay-2" onclick="passwordGate()">回去</button>
+    `;
+    return;
+  }
+
+  // ❌ 其他全部
+  app.innerHTML = `
+    <p class="fade-in" style="font-size:26px">
+      傻瓜。<br><br>
+      连这个都能输错。
+    </p>
+    <button class="fade-in fade-delay-2" onclick="passwordGate()">再来</button>
+  `;
 }
 
 function stage1(){
@@ -387,6 +440,7 @@ passwordGate();
 </script>
 </body>
 </html>
+
 
 
 
