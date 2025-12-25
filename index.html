@@ -262,23 +262,22 @@ function stage4(){
 /* ---------- 第五关 ---------- */
 function stage5(){
   app.innerHTML=`
-    <div class="stage">
+    <div class="stage" id="stage5">
       <div id="gift">🎁</div>
       <p style="font-size:24px">撸他 赶紧的</p>
     </div>
   `;
-  
-  const gift=document.getElementById("gift");
-  let startY=null, moves=0, scale=1, acc=0;
-  const threshold=10;
 
-  // 開始拖動
+  const stage = document.getElementById("stage5");
+  const gift = document.getElementById("gift");
+  let startY = null, moves = 0, scale = 1, acc = 0;
+  const threshold = 10;
+
   function startMove(e){
     startY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
     e.preventDefault();
   }
 
-  // 拖動中
   function onMove(e){
     if(startY===null) return;
     const y = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
@@ -289,10 +288,22 @@ function stage5(){
       scale += 0.002;
       acc -= threshold;
     }
-    gift.style.transform=`scale(${scale})`;
+    gift.style.transform = `scale(${scale})`;
 
     if(moves>=300){
-      app.innerHTML="<h1>马适，圣诞快乐<br>我爱你 🎄</h1>";
+      // 禮物炸開動畫
+      gift.style.transition = "all 0.5s ease";
+      gift.style.transform = "scale(3) rotate(720deg)";
+      gift.style.opacity = 0;
+
+      // 換背景
+      stage.style.background = "url('https://raw.githubusercontent.com/TANG0137/123456/main/0W7A6904.JPG') no-repeat center/cover";
+
+      // 顯示文字
+      setTimeout(()=>{
+        stage.innerHTML = "<h1>马适，圣诞快乐<br>我爱你 🎄</h1>";
+      }, 500);
+
       // 移除事件
       gift.removeEventListener('mousedown', startMove);
       gift.removeEventListener('mousemove', onMove);
@@ -304,18 +315,15 @@ function stage5(){
     }
   }
 
-  // 結束拖動
   function endMove(){
     startY = null;
   }
 
-  // 綁定滑鼠事件
   gift.addEventListener('mousedown', startMove);
   gift.addEventListener('mousemove', onMove);
   gift.addEventListener('mouseup', endMove);
   gift.addEventListener('mouseleave', endMove);
 
-  // 綁定觸控事件（手機）
   gift.addEventListener('touchstart', startMove);
   gift.addEventListener('touchmove', onMove);
   gift.addEventListener('touchend', endMove);
