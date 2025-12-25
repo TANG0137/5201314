@@ -308,14 +308,15 @@ function stage5(){
       gift.style.transform = "scale(3) rotate(720deg)";
       gift.style.opacity = 0;
 
-      // 顯示文字
-      setTimeout(()=>{
-        stage.innerHTML = `
-          <h1 style="color:white;text-align:center;">
-            马适，圣诞快乐<br>我爱你 🎄
-          </h1>
-        `;
-      }, 500);
+// 顯示文字
+setTimeout(()=>{
+  stage.innerHTML = `
+    <h1 style="color:white; text-align:center; font-size:28px; margin-top:50px;">
+      马适，圣诞快乐<br>我爱你 🎄
+    </h1>
+  `;
+}, 500);
+
 
       // 移除事件
       gift.removeEventListener('mousedown', startMove);
@@ -348,6 +349,7 @@ passwordGate();
 </script>
 </body>
 </html>
+
 
 
 
