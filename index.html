@@ -240,8 +240,8 @@ function stage3(){
     p.className="person fade-in";
     p.textContent="🧍";
     p.style.fontSize=size+"px";
-    p.style.left=(cx+Math.random()*800-450-size/2)+"px";
-    p.style.top =(cy+Math.random()*200-100-size/2)+"px";
+    p.style.left=(cx+Math.random()*300-150-size/2)+"px";
+    p.style.top =(cy+Math.random()*300-100-size/2)+"px";
     p.onclick=()=>{
       p.remove();
       people=people.filter(x=>x!==p);
@@ -387,3 +387,4 @@ passwordGate();
 </script>
 </body>
 </html>
+
