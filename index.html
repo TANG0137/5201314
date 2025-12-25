@@ -259,17 +259,23 @@ function stage4(){
 }
 
 /* ---------- 第五关 ---------- */
-/* ---------- 第五关 ---------- */
 function stage5(){
   app.innerHTML=`
-    <div class="stage" id="stage5">
+    <div class="stage" id="stage5" style="
+         background-color:#1b1f3b; /* 初始深色背景 */
+         height:100vh;
+         display:flex;
+         flex-direction:column;
+         justify-content:center;
+         align-items:center;
+    ">
       <div id="gift">🎁</div>
-      <p style="font-size:24px">撸他 赶紧的</p>
+      <p style="font-size:24px;color:white;margin-top:20px;">撸他 赶紧的</p>
     </div>
   `;
 
-  const stage = document.getElementById("stage5");
   const gift = document.getElementById("gift");
+  const stage = document.getElementById("stage5");
   let startY = null, moves = 0, scale = 1, acc = 0;
   const threshold = 10;
 
@@ -291,17 +297,24 @@ function stage5(){
     gift.style.transform = `scale(${scale})`;
 
     if(moves>=300){
+      // 背景換成完整圖片
+      stage.style.backgroundImage = "url('https://raw.githubusercontent.com/TANG0137/123456/main/0W7A6904.JPG')";
+      stage.style.backgroundSize = "contain";      // 保持圖片完整
+      stage.style.backgroundPosition = "center";   // 居中
+      stage.style.backgroundRepeat = "no-repeat";  // 不重複
+
       // 禮物炸開動畫
       gift.style.transition = "all 0.5s ease";
       gift.style.transform = "scale(3) rotate(720deg)";
       gift.style.opacity = 0;
 
-      // 換背景
-      stage.style.background = "url('https://raw.githubusercontent.com/TANG0137/123456/main/0W7A6904.JPG') no-repeat center/cover";
-
       // 顯示文字
       setTimeout(()=>{
-        stage.innerHTML = "<h1>马适，圣诞快乐<br>我爱你 🎄</h1>";
+        stage.innerHTML = `
+          <h1 style="color:white;text-align:center;">
+            马适，圣诞快乐<br>我爱你 🎄
+          </h1>
+        `;
       }, 500);
 
       // 移除事件
@@ -328,8 +341,34 @@ function stage5(){
   gift.addEventListener('touchmove', onMove);
   gift.addEventListener('touchend', endMove);
 }
+
+
 /* ========= 启动 ========= */
 passwordGate();
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
