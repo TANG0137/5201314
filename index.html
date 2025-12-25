@@ -39,6 +39,26 @@ button{
   position:relative;
 }
 
+/* ---------- 缓慢浮现动画 ---------- */
+.fade-in{
+  opacity:0;
+  animation:fadeIn 1.2s ease forwards;
+}
+.fade-delay-1{animation-delay:.3s;}
+.fade-delay-2{animation-delay:.6s;}
+.fade-delay-3{animation-delay:.9s;}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(12px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
 /* ---------- 第二关 ---------- */
 #puzzleArea{position:relative;height:260px;}
 #target{
@@ -49,8 +69,8 @@ button{
 }
 #piece{
   position:absolute;
-  left:20px;
-  bottom:20px;
+  left:500px;
+  bottom:250px;
   width:120px;
   cursor:grab;
   touch-action:none;
@@ -67,27 +87,25 @@ button{
 /* ---------- 第四关 ---------- */
 #book{
   border:4px solid rgba(255,255,255,.5);
-  padding:100px;
-  min-height:600px;
-  font-size:18px;
-  max-width:760px;
+  padding:18px;
+  min-height:500px;
+  font-size:20px;
+  max-width:950px;
   margin:0 auto;
+  text-align: left; 
 }
 
 /* ---------- 第五关 ---------- */
 #gift{
-  font-size:64px;
+  font-size:150px;
   transition:transform .1s;
   user-select:none;
 }
-
-
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 背景音樂（請換成你的 HTTPS 音樂網址） -->
 <audio id="bgm" src="123.mp3" loop></audio>
 
 <div id="app"></div>
@@ -96,19 +114,20 @@ button{
 const app = document.getElementById("app");
 const bgm = document.getElementById("bgm");
 
-/* ========= 密码入口 ========= */
-const PASSWORD = "20250501"; // ← 改成你們的暗號
+const PASSWORD = "20250501";
 
 function passwordGate(){
   app.innerHTML = `
-    <p style="font-size:28px">
+    <p class="fade-in" style="font-size:28px">
       输入暗号<br>
-      才能解锁🎁 
+      才能解锁🎁<br>
+      【初次的我们】
     </p>
     <input id="pwd" type="password"
+      class="fade-in fade-delay-1"
       style="font-size:22px;padding:10px;width:80%;text-align:center;">
     <br>
-    <button onclick="checkPassword()">解锁</button>
+    <button class="fade-in fade-delay-2" onclick="checkPassword()">解锁</button>
   `;
 }
 
@@ -123,30 +142,31 @@ function checkPassword(){
   }
 }
 
-/* ---------- 第一关 ---------- */
 function stage1(){
   app.innerHTML = `
-    <p style="font-size:28px">
-      哥，我们已经处了半年了<br>
-      知道嗎?<br>
-      一路上跌跌撞撞的<br>
-      有时候心很慌手脑子很乱<br>
-很笨吧<br>
-谈恋爱谈得乱七八糟的<br>
-哥<br>
-谢谢你这段时间陪着我<br>
-以后的路<br>再牵着你的手一起走<br>
-好吗?<br>
+    <p class="fade-in" style="font-size:28px">
+      适<br>
+      不知不觉已经半年了，<br>
+      我们走得不稳，<br>
+      但走得很认真。<br>
+      有过慌乱，有过失措，<br>
+      爱你都显得笨拙。<br>
+      但你始终在我身边。<br>
+      适<br>
+      谢谢你这段时间陪着我<br>
+      以后的路<br>
+      别放开我<br>
+      让我牵着你，一起走<br>
+      好吗
     </p>
-    <button onclick="stage2()">好</button>
+    <button class="fade-in fade-delay-2" onclick="stage2()">好</button>
   `;
 }
 
-/* ---------- 第二关 ---------- */
 function stage2(){
   app.innerHTML = `
-    <div class="stage">
-      <div id="puzzleArea">
+    <div class="stage fade-in">
+      <div id="puzzleArea" class="fade-in">
         <svg id="target" viewBox="0 0 100 90">
           <path d="M50 85 C10 60,0 35,25 20
                    C40 10,50 25,50 25
@@ -165,7 +185,9 @@ function stage2(){
           </svg>
         </div>
       </div>
-      <p style="font-size:24px">唯一属于你的位置</p>
+      <p class="fade-in fade-delay-2" style="font-size:24px">
+        唯一属于你的位置
+      </p>
     </div>
   `;
 
@@ -189,20 +211,24 @@ function stage2(){
     if(Math.abs(rect.left+60-window.innerWidth/2)<40 &&
        Math.abs(rect.top+60-window.innerHeight/2)<40){
       app.innerHTML=`
-        <p style="font-size:28px">
-          你是我心里<br>最重要的一片拼图<br>沒有你<br>我将不再是我
+        <p class="fade-in" style="font-size:28px">
+          你是我心里<br>
+          最重要的一片拼图<br>
+          没有你<br>
+          我将不再是我
         </p>
-        <button onclick="stage3()">继续</button>
+        <button class="fade-in fade-delay-2" onclick="stage3()">继续</button>
       `;
     }
   };
 }
 
-/* ---------- 第三关 ---------- */
 function stage3(){
   app.innerHTML=`
-    <div class="stage" id="people" style="height:300px;"></div>
-    <p style="font-size:24px">经历过才如此奢望</p>
+    <div class="stage fade-in" id="people" style="height:400px;"></div>
+    <p class="fade-in fade-delay-2" style="font-size:24px">
+      <br><br>经历过才如此奢望
+    </p>
   `;
   const box=document.getElementById("people");
   let people=[];
@@ -211,21 +237,20 @@ function stage3(){
   for(let i=0;i<20;i++){
     const p=document.createElement("div");
     const size=90;
-    p.className="person";
+    p.className="person fade-in";
     p.textContent="🧍";
     p.style.fontSize=size+"px";
-    p.style.left=(cx+Math.random()*300-150-size/2)+"px";
-    p.style.top =(cy+Math.random()*300-150-size/2)+"px";
+    p.style.left=(cx+Math.random()*800-450-size/2)+"px";
+    p.style.top =(cy+Math.random()*200-100-size/2)+"px";
     p.onclick=()=>{
       p.remove();
       people=people.filter(x=>x!==p);
       if(people.length===2){
         app.innerHTML=`
-          <p style="font-size:28px">
-            只有我们两人的世界，<br>
-            是我最幸福的事
+          <p class="fade-in" style="font-size:25px">
+           那些只属于我们两个人的时刻<br>对我来说是最幸福的瞬间。
           </p>
-          <button onclick="stage4()">继续</button>
+          <button class="fade-in fade-delay-2" onclick="stage4()">继续</button>
         `;
       }
     };
@@ -234,35 +259,46 @@ function stage3(){
   }
 }
 
-/* ---------- 第四关 ---------- */
 function stage4(){
-  let page=0;
-  const pages=[
-    "不知道从何时起被你声音吸引住了<br>那也成了我奔向你的契机",
-    "你和别人在一起地场景<br>我发现<br>原来我的心这么脆弱",
-    "每一次的争吵<br>每一次地离开<br>我才知道<br>我已经没办法失去你了",
+  let page = 0;
+  const pages = [
+    "<br><br>不知道从什么时候开始，我被你的声音吸引住了🎵。<br><br>一开始只是觉得好听，后来却发现，只要你一开口，我的注意力就再也离不开了。<br><br>那声音像一条看不见的线，在我还没察觉的时候，已经轻轻系在心上❤️。<br><br>我开始期待你的出现，期待你说话的瞬间，哪怕只是简单的几句话，都能让我心里安静下来。",
+    "看见你和别人谈情说爱的样子，你低声说话，语气温柔，那些我奢望的模样落在别人身上。<br><br>我和你像隔着一层世界。<br><br>看见你和别人相处的画面，我才慢慢发现，原来我的心，比我想象中还要脆弱。<br><br>不是嫉妒失控，也不是想要争什么。<br><br>只是那一瞬间，所有勉强维持的冷静，所有对自己说的“没事”，都是在自欺欺人。<br>没有崩塌，我只是渐渐地明白，我比想像的，更在乎你。",
+    "<br><br><br><br><br>不知从什么时候开始，我变得那么想要你。<br><br>逐渐变得失控，甚至不像自己。<br><br>直到一次次争吵，一次次以为真的要走散，我才知道<br><br>你早就成了我，无法失去的人。",
     " ",
-    "后面的故事，<br>我们一起书写好吗?"
+    "<br><br><br><br><br><br><br><br>往后的故事，我们一起书写<br>好吗?"
   ];
-  app.innerHTML=`
-    <div id="book">${pages[0]}</div>
-    <button id="next">翻页</button>
+
+  app.innerHTML = `
+    <div id="book" class="fade-in" style="text-align:left;">${pages[0]}</div>
+    <button id="next" class="fade-in fade-delay-2">翻页</button>
   `;
-  document.getElementById("next").onclick=()=>{
+
+  document.getElementById("next").onclick = () => {
     page++;
-    if(page<pages.length){
-      document.getElementById("book").innerHTML=pages[page];
-    }else{
+    if(page < pages.length){
+      const book = document.getElementById("book");
+      book.classList.remove("fade-in");
+      void book.offsetWidth; // 觸發重繪動畫
+      book.innerHTML = pages[page];
+
+      // 最後一頁置中，其他頁靠左
+      if(page === pages.length - 1){
+        book.style.textAlign = "center";
+      } else {
+        book.style.textAlign = "left";
+      }
+
+      book.classList.add("fade-in");
+    } else {
       stage5();
     }
   };
 }
-
-/* ---------- 第五关 ---------- */
 function stage5(){
   app.innerHTML=`
     <div class="stage" id="stage5" style="
-         background-color:#1b1f3b; /* 初始深色背景 */
+         background-color:#1b1f3b;
          height:100vh;
          display:flex;
          flex-direction:column;
@@ -270,7 +306,7 @@ function stage5(){
          align-items:center;
     ">
       <div id="gift">🎁</div>
-      <p style="font-size:24px;color:white;margin-top:20px;">撸他 赶紧的</p>
+      <p class="fade-in" style="font-size:24px;color:white;margin-top:20px;"><br><br><br>撸他 赶紧的</p>
     </div>
   `;
 
@@ -296,29 +332,32 @@ function stage5(){
     }
     gift.style.transform = `scale(${scale})`;
 
-    if(moves>=300){
+       if(moves>=700){
       // 背景換成完整圖片
       stage.style.backgroundImage = "url('https://raw.githubusercontent.com/TANG0137/123456/main/0W7A6904.JPG')";
       stage.style.backgroundSize = "contain";      // 保持圖片完整
-      stage.style.backgroundPosition = "center";   // 居中
+      stage.style.backgroundPosition = "center 70%";   // 居中
       stage.style.backgroundRepeat = "no-repeat";  // 不重複
 
-      // 禮物炸開動畫
+
       gift.style.transition = "all 0.5s ease";
       gift.style.transform = "scale(3) rotate(720deg)";
       gift.style.opacity = 0;
 
-// 顯示文字
-setTimeout(()=>{
-  stage.innerHTML = `
-    <h1 style="color:white; text-align:center; font-size:28px; margin-top:-20px;">
-      马适，圣诞快乐<br>我爱你 🎄
-    </h1>
-  `;
-}, 500);
+      stage.innerHTML = `
+        <div style="position:relative; width:100%; height:100%;">
+          <h1 class="fade-in" style="
+              color:white; 
+              text-align:center; 
+              font-size:19px; 
+              position:absolute; 
+              top:40px;
+              width:100%;
+          ">哥今天是我们一起过的第一个圣诞节。<br><br>我想过，这些话留到跨年会不会更好。<br>但想了会就放弃了，我知道，能陪你跨年的人，大概不会是我。所以我想，在今天这个特别的日子，替我们划下一个句点，就当作是我们的跨年了。 😁其实，我从来没有和人单独过圣诞节的时刻。但今年不一样。因为有你在，这个节日，第一次有了意义。 ✌️愿我们的每一个圣诞节、每一天都像今天一样。<br>有爱、有笑、有你。<br>马适，圣诞节快乐。我爱你。 🎄
+          </h1>
+        </div>
+      `;
 
-
-      // 移除事件
       gift.removeEventListener('mousedown', startMove);
       gift.removeEventListener('mousemove', onMove);
       gift.removeEventListener('mouseup', endMove);
@@ -343,37 +382,8 @@ setTimeout(()=>{
   gift.addEventListener('touchend', endMove);
 }
 
-
 /* ========= 启动 ========= */
 passwordGate();
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
